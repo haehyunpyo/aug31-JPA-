@@ -1,4 +1,6 @@
-package com.phyho.web;
+package com.phyho;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+//영속성
 
 @Entity
-@Data
 @Table(name = "jmember")
+@NoArgsConstructor
+@Data
 public class Member {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,12 +25,13 @@ public class Member {
 	@Column(length = 10)
 	private String mname;
 	
-	@Column(name="mid", unique = true)
+	@Column(unique = true)
 	private String mid;
 	
+	@Column(nullable = false)
 	private String mpw;
 	
 	@Column(columnDefinition = "TIMESTAMP")
-	private String mjoindate;
+	private LocalDateTime mjoindate;
 	
 }
